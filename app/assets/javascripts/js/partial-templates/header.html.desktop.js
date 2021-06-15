@@ -1,4 +1,4 @@
-PT_HEADER_DESKTOP = `
+const PT_HEADER_DESKTOP = `
 <header id="header">
   <div class="wfx">
     <nav>

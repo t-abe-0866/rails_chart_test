@@ -1,4 +1,4 @@
-PT_HEADER_MOBILE = `
+const PT_HEADER_MOBILE = `
 <header id="header">
   <div class="wfx">
     <nav>
