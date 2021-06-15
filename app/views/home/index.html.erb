@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>EyeFarm Cloud</title>
+    <!-- PT: head -->
+    <script src="/assets/js/partial-templates/head.html.js"></script>
+    <!-- // -->
+  </head>
+  <body>
+    <!-- PT: header -->
+    <script src="/assets/js/partial-templates/header.html.js"></script>
+    <!-- // -->
+    <main>
+      <article>
+        <div class="wfx">
+          <header id="page-header" data-grid>
+            <div data-grid-cell>
+              <div data-layout="arranger">
+                <div data-position="left">
+                  <h2 id="page-name">観測グラフ - 一覧</h2>
+                </div>
+              </div>
+            </div>
+            <div data-grid-cell>
+              <div data-layout="arranger">
+                <div data-position="right">
+                  <div data-component="search-form">
+                    <input type="search" data-styled placeholder="検索" name="search" value="">
+                    <button data-styled data-appearance="icon" data-variant><i class="far fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-grid-cell>
+              <div data-layout="arranger">
+                <div data-position="right">
+                  <div data-component="toolbar">
+                    <label>15個の項目</label>
+                    <nav data-component="pagination">
+                      <div data-part="items">
+                        <button><i class="fal fa-angle-double-left"></i></button>
+                        <button><i class="fal fa-angle-left"></i></button>
+                        <div data-part="page-counter">
+                          <input data-part="current" type="text" value="1">
+                          <span data-part="total">2</span>
+                        </div>
+                        <button><i class="fal fa-angle-right"></i></button>
+                        <button><i class="fal fa-angle-double-right"></i></button>
+                      </div>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+          <div id="page-body" data-grid>
+            <div data-grid-cell="canvas">
+              <div data-grid>
+                <div data-grid-cell>
+                  <table data-styled data-appearance-mobile="list-view" data-variant-mobile="^icon ^controls">
+                    <thead>
+                      <tr>
+                        <th colspan="2">圃場</th>
+                        <th>ID</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td data-part="icon"><img class="list-view-icon" src="/assets/img/placeholder_square.svg" alt=""></td>
+                        <td data-scope="圃場">圃場 1</td>
+                        <td data-scope="ID">10000001</td>
+                        <td data-scope="操作" data-arrangement="text-align-center" data-part="controls">
+                          <div data-component="inline-toolbar" data-variant="icons" data-variant-mobile="^vertical">
+                            <ul data-part="items">
+                              <li>
+                                <a data-styled data-appearance="icon" href="sample_chart1" title="編集"><i class="fad fa-eye"></i></a>
+                              </li>
+                            </ul>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td data-part="icon"><img class="list-view-icon" src="/assets/img/placeholder_square.svg" alt=""></td>
+                        <td data-scope="圃場">圃場 2</td>
+                        <td data-scope="ID">10000002</td>
+                        <td data-scope="操作" data-arrangement="text-align-center" data-part="controls">
+                          <div data-component="inline-toolbar" data-variant="icons" data-variant-mobile="^vertical">
+                            <ul data-part="items">
+                              <li>
+                                <a data-styled data-appearance="icon" href="sample_chart2" title="編集"><i class="fad fa-eye"></i></a>
+                              </li>
+                            </ul>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td data-part="icon"><img class="list-view-icon" src="/assets/img/placeholder_square.svg" alt=""></td>
+                        <td data-scope="圃場">圃場 3</td>
+                        <td data-scope="ID">10000003</td>
+                        <td data-scope="操作" data-arrangement="text-align-center" data-part="controls">
+                          <div data-component="inline-toolbar" data-variant="icons" data-variant-mobile="^vertical">
+                            <ul data-part="items">
+                              <li>
+                                <a data-styled data-appearance="icon" href="sample_chart3" title="編集"><i class="fad fa-eye"></i></a>
+                              </li>
+                            </ul>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <footer id="page-footer" data-grid>
+            <div data-grid-cell>
+              <div data-layout="arranger">
+                <div data-position="right">
+                  <div data-component="toolbar">
+                    <label>15個の項目</label>
+                    <nav data-component="pagination">
+                      <div data-part="items">
+                        <button><i class="fal fa-angle-double-left"></i></button>
+                        <button><i class="fal fa-angle-left"></i></button>
+                        <div data-part="page-counter">
+                          <input data-part="current" type="text" value="1">
+                          <span data-part="total">2</span>
+                        </div>
+                        <button><i class="fal fa-angle-right"></i></button>
+                        <button><i class="fal fa-angle-double-right"></i></button>
+                      </div>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </article>
+    </main>
+    <!-- PT: footer -->
+    <script src="/assets/js/partial-templates/footer.html.js"></script>
+    <!-- // -->
+  </body>
+</html>

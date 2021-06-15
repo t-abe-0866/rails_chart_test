@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>EyeFarm Cloud</title>
+    <!-- PT: head -->
+    <script src="/assets/js/partial-templates/head.html.js"></script>
+    <link rel="stylesheet" href="/assets/css/spec.login.css">
+    <script>
+      $(window).on('load', function () {
+        if (docCookies.getItem('view-mode') == 'mobile') {
+          $('head').append(`
+            <link rel="stylesheet" href="/assets/css/spec.login.mobile.css">
+          `);
+        }
+      });
+    </script>
+    <!-- // -->
+  </head>
+  <body data-state="not-logged-in">
+    <main>
+      <article>
+          
+        <div id="layout" data-grid>
+          <div data-grid-cell>
+            <header>
+              <h1 id="site-name"><img src="/assets/img/logo_white.svg" alt=""></h1>
+            </header>
+          </div>
+          <div data-grid-cell>
+            <div id="credentials">
+              <form action="./index.html">
+                <div data-grid>
+                  <div data-grid-cell>
+                    <dl data-component="kv-list">
+                      <div>
+                        <dt>ユーザー名</dt>
+                        <dd>
+                          <input data-styled type="text" placeholder="登録メールアドレスを入力してください" value="">
+                        </dd>
+                      </div>
+                      <div>
+                        <dt>パスワード</dt>
+                        <dd>
+                          <input data-styled type="password" placeholder="ログインパスワードを入力してください" value="">
+                        </dd>
+                      </div>
+                    </dl>
+                  </div>
+                  <div data-grid-cell data-arrangement="text-align-center">
+                    <div data-layout="arranger">
+                      <div data-position="center">
+                        <div data-component="button-group">
+                          <a data-styled data-variant="credential" href="home">ログイン</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div data-grid-cell data-arrangement="text-align-center">
+                    <a href="#" onclick="forgotten_password()">ログインパスワードを忘れたら</a>
+                    <script>
+                      
+                      var dialog;
+
+                      function forgotten_password() {
+                        dialog = new EFCCDialog({
+                          title: 'ログインパスワードを再設定しますか？',
+                          body: `
+                            <p>登録メールアドレスを入力してください。<br>ログインパスワードをリセットするメールをお客様の元へ送信します。</p>
+                            <dl data-component="kv-list">
+                              <div>
+                                <dt>メールアドレス</dt>
+                                <dd>
+                                  <input data-styled type="text" placeholder="登録メールアドレスを入力してください" value="">
+                                </dd>
+                              </div>
+                            </dl>
+                          `,
+                          footer: `
+                            <div data-layout="arranger">
+                              <div data-position="right">
+                                <div data-component="button-group">
+                                  <button data-styled data-component-role="close">キャンセル</button>
+                                  <button data-styled data-variant="credential" onclick="send_password_reset_request()">送信</button>
+                                </div>
+                              </div>
+                            </div>
+                          `
+                        });
+
+                        dialog.show();
+                      }
+
+
+
+                      function send_password_reset_request() {
+
+                        var notification;
+
+                        // AJAX などでリクエスト送信...
+
+                        var request_success = true;
+
+                        if ( request_success ) {
+                          notification = new EFCCNotification({
+                            body: '確認メールを送信しました。'
+                          });
+                        } else {
+                          notification = new EFCCNotification({
+                            body: 'メールアドレスを確認できませんでした。'
+                          });
+                        }
+
+                        dialog.close();
+                        notification.show();
+                      }
+                    </script>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </main>
+    <!-- PT: footer -->
+    <script src="/assets/js/partial-templates/footer.html.js"></script>
+    <!-- // -->
+  </body>
+</html>
