@@ -55,3 +55,5 @@ gem 'webpacker'
 gem 'react-rails'
 
 gem 'flatpickr'
+
+gem 'pg', '>= 0.18', '< 2.0'
