@@ -40,9 +40,9 @@ var html = `
 <script src='/assets/js/lib/flatpickr-4.6.3/dist/flatpickr.min.js'></script>
 <script src='/assets/js/lib/flatpickr-4.6.3/dist/l10n/ja.js'></script>
 
-<link rel="stylesheet" href="/assets/css/init-kit.css">
-<link rel="stylesheet" href="/assets/css/variables.css">
-<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/init-kit.scss">
+<link rel="stylesheet" href="/assets/css/variables.scss">
+<link rel="stylesheet" href="/assets/css/main.scss">
 `;
 
 /*
@@ -60,16 +60,16 @@ if (filename) {
 */
 
 html += `
-<link rel="stylesheet" href="/assets/css/elements.as.css">
-<link rel="stylesheet" href="/assets/css/elements.components.css">
-<link rel="stylesheet" href="/assets/css/elements.styled.css">
-<link rel="stylesheet" href="/assets/css/elements.classes.css">
+<link rel="stylesheet" href="/assets/css/elements.as.scss">
+<link rel="stylesheet" href="/assets/css/elements.components.scss">
+<link rel="stylesheet" href="/assets/css/elements.styled.scss">
+<link rel="stylesheet" href="/assets/css/elements.classes.scss">
 
-<link rel="stylesheet" href="/assets/css/flex.css">
-<link rel="stylesheet" href="/assets/css/grid.css">
+<link rel="stylesheet" href="/assets/css/flex.scss">
+<link rel="stylesheet" href="/assets/css/grid.scss">
 
-<link rel="stylesheet" href="/assets/css/layouts.css">
-<link rel="stylesheet" href="/assets/css/arrangement.css">
+<link rel="stylesheet" href="/assets/css/layouts.scss">
+<link rel="stylesheet" href="/assets/css/arrangement.scss">
 
 <link rel="stylesheet" href="/assets/fonts/fontawesome-pro-5.11.2-web/css/all.min.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&display=swap" rel="stylesheet">

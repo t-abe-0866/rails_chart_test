@@ -5,7 +5,7 @@
     <title>EyeFarm Cloud</title>
     <!-- PT: head -->
     <script src="/assets/js/partial-templates/head.html.js"></script>
-    <link rel="stylesheet" href="/assets/css/spec.dashboard.css">
+    <link rel="stylesheet" href="/assets/css/spec.dashboard.scss">
     <script>
       function edit_view_item() {
         var dialog = new EFCCDialog({
@@ -119,7 +119,7 @@
 
       $(window).on('load', function () {
         if (docCookies.getItem('view-mode') == 'mobile') {
-          $('head').append(`<link rel="stylesheet" href="/assets/css/spec.dashboard.mobile.css">`);
+          $('head').append(`<link rel="stylesheet" href="/assets/css/spec.dashboard.mobile.scss">`);
         }
 
         $('[data-function="edit_view_item"]').on('click', function () {

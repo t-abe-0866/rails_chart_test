@@ -5,12 +5,12 @@
     <title>EyeFarm Cloud</title>
     <!-- PT: head -->
     <script src="/assets/js/partial-templates/head.html.js"></script>
-    <link rel="stylesheet" href="/assets/css/spec.login.css">
+    <link rel="stylesheet" href="/assets/css/spec.login.scss">
     <script>
       $(window).on('load', function () {
         if (docCookies.getItem('view-mode') == 'mobile') {
           $('head').append(`
-            <link rel="stylesheet" href="/assets/css/spec.login.mobile.css">
+            <link rel="stylesheet" href="/assets/css/spec.login.mobile.scss">
           `);
         }
       });
