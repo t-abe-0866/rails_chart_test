@@ -40,6 +40,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   if( docCookies.getItem('view-mode') == 'mobile') {
+    console.log('PT_HEADER_MOBILE')
     $('head').append(`
       <link rel="stylesheet" href="/assets/css/grid.mobile.scss">
       <link rel="stylesheet" href="/assets/css/layouts.mobile.scss">
@@ -54,6 +55,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       is_mobile: true
     });
   } else {
+    console.log('PT_HEADER_DESKTOP')
     if (browsing_in_mobile()) {
       $('meta[name="viewport"]').attr({
         content: `width=1440, minimum-scale=0.5, initial-scale=1 maximum-scale=2.5, user-scalable=yes`
