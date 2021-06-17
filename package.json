@@ -1,7 +1,6 @@
 {
   "name": "chart-test",
   "private": true,
-  "type": "module",
   "dependencies": {
     "@antv/g2": "^4.1.18",
     "@babel/preset-react": "^7.14.5",
