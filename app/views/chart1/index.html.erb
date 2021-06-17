@@ -120,6 +120,7 @@
       $(window).on('load', function () {
         if (docCookies.getItem('view-mode') == 'mobile') {
           $('head').append(`<link rel="stylesheet" href="/assets/css/spec.dashboard.mobile.scss">`);
+          console.log('dashboard.mobile.scss')
         }
 
         $('[data-function="edit_view_item"]').on('click', function () {
