@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   if( docCookies.getItem('view-mode') == 'mobile') {
     console.log('1main.js')
     console.log('2main.js')
-    $('body').append(`
+    $('head').append(`
       <link rel="stylesheet" href="/assets/css/mobile/grid.mobile.scss">
       <link rel="stylesheet" href="/assets/css/mobile/layouts.mobile.scss">
       <link rel="stylesheet" href="/assets/css/mobile/elements.components.mobile.scss">
