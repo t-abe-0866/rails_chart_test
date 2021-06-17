@@ -40,14 +40,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   if( docCookies.getItem('view-mode') == 'mobile') {
-    console.log('PT_HEADER_MOBILE')
-    $('head').append(`
-      <link rel="stylesheet" href="/assets/css/grid.mobile.scss">
-      <link rel="stylesheet" href="/assets/css/layouts.mobile.scss">
-      <link rel="stylesheet" href="/assets/css/elements.components.mobile.scss">
-      <link rel="stylesheet" href="/assets/css/elements.styled.mobile.scss">
-      <link rel="stylesheet" href="/assets/css/main.mobile.scss">
-      <link rel="stylesheet" href="/assets/css/arrangement.mobile.scss">
+    console.log('1main.js')
+    console.log('2main.js')
+    $('body').append(`
+      <link rel="stylesheet" href="/assets/css/mobile/grid.mobile.scss">
+      <link rel="stylesheet" href="/assets/css/mobile/layouts.mobile.scss">
+      <link rel="stylesheet" href="/assets/css/mobile/elements.components.mobile.scss">
+      <link rel="stylesheet" href="/assets/css/mobile/elements.styled.mobile.scss">
+      <link rel="stylesheet" href="/assets/css/mobile/main.mobile.scss">
+      <link rel="stylesheet" href="/assets/css/mobile/arrangement.mobile.scss">
     `);
 
     $('body').attr('data-view-mode', 'mobile');

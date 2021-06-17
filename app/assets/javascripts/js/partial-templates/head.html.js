@@ -58,6 +58,7 @@ if (filename) {
   }
 }
 */
+console.log('hard.js')
 
 html += `
 <link rel="stylesheet" href="/assets/css/elements.as.scss">
@@ -88,7 +89,7 @@ html += `
 <script src='/assets/js/partial-templates/header.html.desktop.js'></script>
 <script src='/assets/js/partial-templates/header.html.mobile.js'></script>
 
-<script src='/assets/js/main.js'></script>
+<script src='/assets/js/js_main.js'></script>
 <script src='/assets/js/samples.js'></script>
 `;
 document.write(html);
