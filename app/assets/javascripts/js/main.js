@@ -315,33 +315,6 @@ function put_sample_graph( selector = 'graph-sample' ) {
   document.close();
 }
 
-
-
-/*
-  Flatpickr wrappers
- */
-
-// preload datepicker to elements,
-$(function(){
-  flatpickr.localize(flatpickr.l10ns.ja);
-
-  $('input[data-js-lib="flatpickr-date"]').each(function(){
-    $(this).flatpickr({
-      dateFormat: 'Y/m/d'
-    });
-  });
-
-  $('input[data-js-lib="flatpickr-time"]').each(function(){
-    $(this).flatpickr({
-      enableTime: true,
-      noCalendar: true,
-      dateFormat: "H:i"
-    });
-  });
-});
-
-
-
 /*
   Dev: [data-dev-behaviour]
 */
