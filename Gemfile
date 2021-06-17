@@ -54,6 +54,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'webpacker'
 gem 'react-rails'
 
-gem 'jquery-rails'
+gem 'flatpickr'
 
 gem 'pg', '>= 0.18', '< 2.0'

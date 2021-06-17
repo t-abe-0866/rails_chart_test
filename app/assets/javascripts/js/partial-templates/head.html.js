@@ -31,9 +31,6 @@ var html = `
 
 <script src='//cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js'></script>
 
-<script src='/assets/js/lib/flatpickr-4.6.3/dist/flatpickr.min.js'></script>
-<script src='/assets/js/lib/flatpickr-4.6.3/dist/l10n/ja.js'></script>
-
 <link rel="stylesheet" href="/assets/css/init-kit.scss">
 <link rel="stylesheet" href="/assets/css/variables.scss">
 <link rel="stylesheet" href="/assets/css/main.scss">
@@ -70,7 +67,6 @@ html += `
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 
-<link rel="stylesheet" href="/assets/js/lib/flatpickr-4.6.3/dist/flatpickr.min.css">
 
 <script src='/assets/js/class.EFCComponents.js'></script>
 
