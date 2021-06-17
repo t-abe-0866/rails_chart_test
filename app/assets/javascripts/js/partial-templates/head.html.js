@@ -83,15 +83,12 @@ html += `
 
 <link rel="stylesheet" href="/assets/js/lib/flatpickr-4.6.3/dist/flatpickr.min.css">
 
-
+<script src='/assets/js/class.EFCComponents.js'></script>
 
 <script src='/assets/js/partial-templates/header.html.desktop.js'></script>
 <script src='/assets/js/partial-templates/header.html.mobile.js'></script>
 
 <script src='/assets/js/main.js'></script>
-
-<script src='/assets/js/class.EFCComponents.js'></script>
-
 <script src='/assets/js/samples.js'></script>
 `;
 document.write(html);
