@@ -207,9 +207,9 @@
                                   <div data-part="nav-left">
                                     <button data-styled data-variant="^maximized"><i class="fas fa-caret-left"></i></button>
                                   </div>
-                                  <div data-part="graph">
-                                    <%= javascript_pack_tag 'application' %>
-                                    <%= react_component("Chart3", {}) %>
+                                  <%= javascript_pack_tag 'application' %>
+                                  <div data-part="graph" id="mydiv">
+                                    <%= react_component("Chart3", {num: @test}) %>
                                   </div>
                                   <div data-part="nav-right">
                                     <button data-styled data-variant="^maximized"><i class="fas fa-caret-right"></i></button>
@@ -254,41 +254,6 @@
                                         <label>Very loooooooong item name</label>
                                       </li>
                                     </ul>
-                                  </div>
-                                  <div data-part="item">
-                                    <div data-component="toolbar-group">
-                                      <div data-component="toolbar">
-                                        <label>表示範囲</label>
-                                        <ul data-component="segmented-button" data-dev-behaviour="exclusive">
-                                          <li>
-                                            <button data-state="active">6時間</button>
-                                          </li>
-                                          <li>
-                                            <button>12時間</button>
-                                          </li>
-                                          <li>
-                                            <button>24時間</button>
-                                          </li>
-                                          <li>
-                                            <button>3日</button>
-                                          </li>
-                                          <li>
-                                            <button>5日</button>
-                                          </li>
-                                        </ul>
-                                      </div>
-                                      <div data-component="toolbar">
-                                        <label>スパン</label>
-                                        <ul data-component="segmented-button" data-dev-behaviour="exclusive">
-                                          <li>
-                                            <button data-state="active">フル</button>
-                                          </li>
-                                          <li>
-                                            <button>24時間</button>
-                                          </li>
-                                        </ul>
-                                      </div>
-                                    </div>
                                   </div>
                                 </div>
                               </div>
