@@ -5,11 +5,11 @@ import { Chart, registerInteraction } from '@antv/g2';
 
 const Chart1 = (props) => {
  
-    registerInteraction('drag-move', {
-      start: [{ trigger: 'plot:mousedown', action: 'scale-translate:start' }],
-      processing: [{ trigger: 'plot:mousemove', action: 'scale-translate:translate', throttle: {wait: 100, leading: true, trailing: false} }],
-      end: [{ trigger: 'plot:mouseup', action: 'scale-translate:end' }],
-    });
+  registerInteraction('drag-move', {
+    start: [{ trigger: 'plot:mousedown', action: 'scale-translate:start' }],
+    processing: [{ trigger: 'plot:mousemove', action: 'scale-translate:translate', throttle: {wait: 100, leading: true, trailing: false} }],
+    end: [{ trigger: 'plot:mouseup', action: 'scale-translate:end' }],
+  });
   
   fetch('https://gw.alipayobjects.com/os/antvdemo/assets/data/scatter.json')
     .then((res) => res.json())

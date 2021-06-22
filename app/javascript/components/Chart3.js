@@ -5,23 +5,28 @@ import { Chart, registerShape, registerInteraction } from '@antv/g2';
 
 let chart_period = 1000;
 
+class Chart3 extends React.Component {   //page1クラスにReact.Componentを継承する
 
- function fan_chart(chart_period1) {
-
+  render() {                          //画面表示の為のrenderメソッドを定義する
+  console.log(this.props.num) 
   fetch('/assets/data.json')
     .then(res => res.json())
     .then(data => {
+      if (chart) {
+        chart.clear();
+      }
       const chart = new Chart({
         container: 'container',
         autoFit: true,
         height: 500,
+        width: 700,
       });
       chart.data(data);
       
       chart.scale({
         time: {
           min: 0,
-          max: chart_period1
+          max: this.props.num
         },
         temp: {
           min: 0,
@@ -87,76 +92,10 @@ let chart_period = 1000;
     
       chart.render();
     });
-  }
-
-class Chart3 extends React.Component {   //page1クラスにReact.Componentを継承する
-
- handleClick1() {
-    chart_period = 360
-    fan_chart(chart_period);
-  }
-  
-   handleClick2() {
-    chart_period = 720
-    fan_chart(chart_period);
-  }
-  
-   handleClick3() {
-    chart_period = 1440
-    fan_chart(chart_period);
-  }
-  
-   handleClick4() {
-    chart_period = 4320
-    fan_chart(chart_period);
-  }
-  
-   handleClick5() {
-    chart_period = 7000
-    fan_chart(chart_period);
-  }
- 
-  render() {                          //画面表示の為のrenderメソッドを定義する
 
   return (
-        <div>
-          <div data-part="item">
-            <div data-component="toolbar-group">
-              <div data-component="toolbar">
-                <label>表示範囲</label>
-                <ul data-component="segmented-button" data-dev-behaviour="exclusive">
-                  <li>
-                    <button data-state="active"  onClick={this.handleClick1}>6時間</button>
-                  </li>
-                  <li>
-                    <button  onClick={this.handleClick2} value="2">12時間</button>
-                  </li>
-                  <li>
-                    <button  onClick={this.handleClick3} value="3">24時間</button>
-                  </li>
-                  <li>
-                    <button  onClick={this.handleClick4} value="4">3日</button>
-                  </li>
-                  <li>
-                    <button onClick={this.handleClick5}>5日</button>
-                  </li>
-                </ul>
-              </div>
-              <div data-component="toolbar">
-                <label>スパン</label>
-                <ul data-component="segmented-button" data-dev-behaviour="exclusive">
-                  <li>
-                    <button data-state="active">フル</button>
-                  </li>
-                  <li>
-                    <button>24時間</button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-        <div id="container" />
+    <div>
+      <div id="container" />
     </div>
   );
   }
