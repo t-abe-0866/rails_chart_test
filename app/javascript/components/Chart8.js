@@ -1,26 +1,26 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-import { Chart, registerShape, registerInteraction } from '@antv/g2';
+import { Chart, registerShape, registerInteraction, registerTheme } from '@antv/g2';
 
 let chart_period = 1000;
 
-class Chart7 extends React.Component {   //page1クラスにReact.Componentを継承する
+class Chart8 extends React.Component {   //page1クラスにReact.Componentを継承する
 
   render() {                          //画面表示の為のrenderメソッドを定義する
   
   var URL = ''
   
   if (this.props.num == "A") {
-    URL = '/assets/data_2A.json'
+    URL = '/assets/dataA.json'
   } else if (this.props.num == "B") {
-    URL = '/assets/data_2B.json'
+    URL = '/assets/dataB.json'
   } else if (this.props.num == "C") {
-    URL = '/assets/data_2C.json'
+    URL = '/assets/dataC.json'
   } else if (this.props.num == "D") {
-    URL = '/assets/data_2D.json'
+    URL = '/assets/dataD.json'
   } else {
-    URL = '/assets/data_2E.json'
+    URL = '/assets/dataE.json'
   }
   
   
@@ -55,19 +55,22 @@ class Chart7 extends React.Component {   //page1クラスにReact.Componentを�
         { trigger: 'dblclick', action: ['x-rect-mask:hide', 'sibling-x-filter:reset']}
       ]
     });
+    
+    // Step 1: 注册主题
+    registerTheme('newTheme', {
+      backgroundColor: '#025DF4',
+    });
+    
     const chart = new Chart({
       container: 'container',
       autoFit: true,
       height: 500,
-      width: 700,
+      padding: [10, 40, 10, 10],
+      limitInPlot: true,
       defaultInteractions:[]
     });
     
     chart.scale('time', {
-      tickCount: 5,
-      range: [0, 1]
-    });
-    chart.scale('time_2', {
       tickCount: 5,
       range: [0, 1]
     });
@@ -76,16 +79,22 @@ class Chart7 extends React.Component {   //page1クラスにReact.Componentを�
           max: 50
     });
     
-    chart.scale('hum_2', {
-          min: 0,
+    chart.scale('hum', {
+                min: 0,
           max: 100
     });
     
-
-    chart.tooltip({
-      showCrosshairs: true
+    chart.scale('co2', {
+      nice: true
     });
-    chart.removeInteraction('tooltip');
+    
+    chart.scale('sol_rad', {
+      nice: true
+    });
+    
+    chart.scale('sat', {
+      nice: true
+    });
 
     const view1 = chart.createView({
       region: {
@@ -95,7 +104,7 @@ class Chart7 extends React.Component {   //page1クラスにReact.Componentを�
         },
         end: {
           x: 1,
-          y: 0.4
+          y: 0.7
         }
       },
       padding: [10, 10, 40, 60]
@@ -104,12 +113,26 @@ class Chart7 extends React.Component {   //page1クラスにReact.Componentを�
     view1.data(data);
     
     view1.interaction('tooltip');
-    view1.interaction('sibling-tooltip');
+    
+
     
     view1.line().position('time*temp').style({
       lineWidth: 1,
     }).color('#FF4500').shape('circle');
+    view1.line().position('time*hum').style({
+      lineWidth: 1,
+    }).color('#9E3DFF').shape('circle');
+    view1.line().position('time*co2').style({
+      lineWidth: 1,
+    }).color('#FF9E3D').shape('circle');
+    view1.line().position('time*sol_rad').style({
+      lineWidth: 1,
+    }).color('#9AD681').shape('circle');
+    view1.line().position('time*sat').style({
+      lineWidth: 1,
+    }).color('#4FAAEB').shape('circle');
     
+  
     view1.tooltip({
       showCrosshairs: true,
       shared: true,
@@ -123,43 +146,18 @@ class Chart7 extends React.Component {   //page1クラスにReact.Componentを�
       },
     });
     
-    const view2 = chart.createView({
-      region: {
-        start: {
-          x: 0,
-          y: 0.4
-        },
-        end: {
-          x: 1,
-          y: 0.8
-        }
-      },
-      padding: [10, 10, 40, 60]
-    });
-    view2.animate(false);
-    view2.data(data);
-    
-    view2.interaction('tooltip');
-    view2.interaction('sibling-tooltip');
-    
-    view2.line().position('time_2*hum_2').style({
-      lineWidth: 1,
-    }).color('#9E3DFF').shape('circle');
-
-    
-  
-    view2.tooltip({
-      showCrosshairs: true,
-      shared: true,
-    });
-    
-    view2.axis('temp_2', {
+    view1.axis('hum', {
       label: {
         formatter: (val) => {
           return val + ' %';
         },
       },
     });
+    
+    view1.axis('co2', false);
+    view1.axis('sol_rad', false);
+    view1.axis('sat', false);
+  
   
     const view3 = chart.createView({
       region: {
@@ -178,14 +176,28 @@ class Chart7 extends React.Component {   //page1クラスにReact.Componentを�
     view3.interaction('other-filter');
     view3.data(data);
     view3.tooltip(false);
-    view3.axis(false);
+
+    view3.axis('temp', false);
+    view3.axis('hum', false);
+    view3.axis('co2', false);
+    view3.axis('sol_rad', false);
+    view3.axis('sat', false);
     
     view3.line().position('time*temp').style({
       lineWidth: 1,
-    }).color('#FF4500').shape('circle');
-    view3.line().position('time_2*hum_2').style({
+    }).color('l(100) 0:#a50f15 1:#fee5d9').shape('circle');
+    view3.line().position('time*hum').style({
       lineWidth: 1,
     }).color('#9E3DFF').shape('circle');
+    view3.line().position('time*co2').style({
+      lineWidth: 1,
+    }).color('#FF9E3D').shape('circle');
+    view3.line().position('time*sol_rad').style({
+      lineWidth: 1,
+    }).color('#9AD681').shape('circle');
+    view3.line().position('time*sat').style({
+      lineWidth: 1,
+    }).color('#4FAAEB').shape('circle');
     
     chart.render();
   
@@ -199,4 +211,4 @@ class Chart7 extends React.Component {   //page1クラスにReact.Componentを�
   }
 }
 
-export default Chart7; // ここを修正
+export default Chart8; // ここを修正

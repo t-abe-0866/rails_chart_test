@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'sample_chart5', to: 'chart5#index'
   get 'sample_chart6', to: 'chart6#index'
   get 'sample_chart7', to: 'chart7#index'
+  get 'sample_chart8', to: 'chart8#index'
   
   get 'sample_chartA', to: 'chart3#chartA'
   get 'sample_chartB', to: 'chart3#chartB'
@@ -41,5 +42,11 @@ Rails.application.routes.draw do
   get 'sample_chartC7', to: 'chart7#chartC'
   get 'sample_chartD7', to: 'chart7#chartD'
   get 'sample_chartE7', to: 'chart7#chartE'
+  
+  get 'sample_chartA8', to: 'chart8#chartA'
+  get 'sample_chartB8', to: 'chart8#chartB'
+  get 'sample_chartC8', to: 'chart8#chartC'
+  get 'sample_chartD8', to: 'chart8#chartD'
+  get 'sample_chartE8', to: 'chart8#chartE'
   
 end

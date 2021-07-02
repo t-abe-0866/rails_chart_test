@@ -59,6 +59,7 @@ class Chart6 extends React.Component {   //page1クラスにReact.Componentを�
       container: 'container',
       autoFit: true,
       height: 500,
+      width: 700,
       defaultInteractions:[]
     });
     

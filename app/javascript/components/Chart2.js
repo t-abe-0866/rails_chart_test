@@ -182,6 +182,7 @@ const Chart2 = (props) => {
           container: 'container',
           autoFit: true,
           height: 500,
+          width: 700,
         });
     
         chart.data(data);

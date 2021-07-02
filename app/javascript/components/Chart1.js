@@ -18,6 +18,7 @@ const Chart1 = (props) => {
         container: 'container1',
         autoFit: true,                  //teautoFit: true の場合、チャート コンテナの幅と高さが自動的に取得されます。ユーザーが高さを設定すると、ユーザーが設定した高さが優先されます。
         height: 500,                    //高さ
+        width: 700,
         limitInPlot: true               //座標系の範囲を超えてジオメトリをカットするかどうか。
       });
       chart1.data(data);

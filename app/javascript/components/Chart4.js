@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-import { Chart, registerShape, registerInteraction } from '@antv/g2';
+import { Chart, registerShape, registerInteraction, registerTheme } from '@antv/g2';
 
 let chart_period = 1000;
 
@@ -55,11 +55,21 @@ class Chart4 extends React.Component {   //page1クラスにReact.Componentを�
         { trigger: 'dblclick', action: ['x-rect-mask:hide', 'sibling-x-filter:reset']}
       ]
     });
+    
+    // Step 1: 注册主题
+    registerTheme('newTheme', {
+      backgroundColor: '#025DF4',
+    });
+    
     const chart = new Chart({
       container: 'container',
       autoFit: true,
       height: 500,
-      defaultInteractions:[]
+      width: 700,
+      padding: [10, 40, 10, 10],
+      limitInPlot: true,
+      defaultInteractions:[],
+      padding: [16, 50, 64],
     });
     
     chart.scale('time', {
@@ -88,49 +98,43 @@ class Chart4 extends React.Component {   //page1クラスにReact.Componentを�
       nice: true
     });
 
-    const view1 = chart.createView({
-      region: {
-        start: {
-          x: 0,
-          y: 0
-        },
-        end: {
-          x: 1,
-          y: 0.6
-        }
-      },
-      padding: [10, 10, 40, 60]
-    });
-    view1.animate(false);
-    view1.data(data);
-    
-    view1.interaction('tooltip');
-    
 
+    chart.animate(false);
+    chart.data(data);
     
-    view1.line().position('time*temp').style({
+    chart.interaction('tooltip');
+    
+    chart.option('slider', {
+      start: 0.1,
+      end: 0.8,
+      trendCfg: {
+        isArea: false,
+      },
+    });
+    
+    chart.line().position('time*temp').style({
       lineWidth: 1,
     }).color('#FF4500').shape('circle');
-    view1.line().position('time*hum').style({
+    chart.line().position('time*hum').style({
       lineWidth: 1,
     }).color('#9E3DFF').shape('circle');
-    view1.line().position('time*co2').style({
+    chart.line().position('time*co2').style({
       lineWidth: 1,
     }).color('#FF9E3D').shape('circle');
-    view1.line().position('time*sol_rad').style({
+    chart.line().position('time*sol_rad').style({
       lineWidth: 1,
     }).color('#9AD681').shape('circle');
-    view1.line().position('time*sat').style({
+    chart.line().position('time*sat').style({
       lineWidth: 1,
     }).color('#4FAAEB').shape('circle');
     
   
-    view1.tooltip({
+    chart.tooltip({
       showCrosshairs: true,
       shared: true,
     });
     
-    view1.axis('temp', {
+    chart.axis('temp', {
       label: {
         formatter: (val) => {
           return val + ' °C';
@@ -138,7 +142,7 @@ class Chart4 extends React.Component {   //page1クラスにReact.Componentを�
       },
     });
     
-    view1.axis('hum', {
+    chart.axis('hum', {
       label: {
         formatter: (val) => {
           return val + ' %';
@@ -146,44 +150,10 @@ class Chart4 extends React.Component {   //page1クラスにReact.Componentを�
       },
     });
     
-    view1.axis('co2', false);
-    view1.axis('sol_rad', false);
-    view1.axis('sat', false);
+    chart.axis('co2', false);
+    chart.axis('sol_rad', false);
+    chart.axis('sat', false);
   
-    const view3 = chart.createView({
-      region: {
-        start: {
-          x: 0,
-          y: 0.8
-        },
-        end: {
-          x: 1,
-          y: 1
-        }
-      },
-      padding: [0, 10, 20, 60]
-    });
-    
-    view3.interaction('other-filter');
-    view3.data(data);
-    view3.tooltip(false);
-    view3.axis(false);
-    
-    view3.line().position('time*temp').style({
-      lineWidth: 1,
-    }).color('#FF4500').shape('circle');
-    view3.line().position('time*hum').style({
-      lineWidth: 1,
-    }).color('#9E3DFF').shape('circle');
-    view3.line().position('time*co2').style({
-      lineWidth: 1,
-    }).color('#FF9E3D').shape('circle');
-    view3.line().position('time*sol_rad').style({
-      lineWidth: 1,
-    }).color('#9AD681').shape('circle');
-    view3.line().position('time*sat').style({
-      lineWidth: 1,
-    }).color('#4FAAEB').shape('circle');
     
     chart.render();
   
