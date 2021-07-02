@@ -69,7 +69,7 @@ class Chart4 extends React.Component {   //page1クラスにReact.Componentを�
       padding: [10, 40, 10, 10],
       limitInPlot: true,
       defaultInteractions:[],
-      padding: [16, 50, 64],
+      padding: [16, 50, 150],// 上，右，下，左
     });
     
     chart.scale('time', {
@@ -110,6 +110,7 @@ class Chart4 extends React.Component {   //page1クラスにReact.Componentを�
       trendCfg: {
         isArea: false,
       },
+      height: 80,
     });
     
     chart.line().position('time*temp').style({
