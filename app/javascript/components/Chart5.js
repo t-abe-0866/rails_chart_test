@@ -59,7 +59,7 @@ class Chart5 extends React.Component {   //page1クラスにReact.Componentを�
       container: 'container',
       autoFit: true,
       height: 500,
-      width: 700,
+      padding: [10, 40, 10, 10],
       defaultInteractions:[]
     });
     
@@ -179,6 +179,9 @@ class Chart5 extends React.Component {   //page1クラスにReact.Componentを�
     view3.data(data);
     view3.tooltip(false);
     view3.axis(false);
+    
+    view3.axis('temp', false);
+    view3.axis('temp_2', false);
     
     view3.line().position('time*temp').style({
       lineWidth: 1,
