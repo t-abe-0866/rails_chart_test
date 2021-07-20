@@ -51,6 +51,7 @@ body[data-locked] {
   top: 0;
   left: 0;
   width: 100%;
+  min-width: 1200px;
   z-index: 5;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -72,6 +73,7 @@ body[data-locked] {
 #footer {
   background: #ffffff;
   border-top: 1px solid var(--color-theme-gray-light);
+  min-width: 1200px;
 }
 
 #copyright {
@@ -308,7 +310,7 @@ p:last-of-type {
 }
 
 #page-body {
-  
+  min-width: 1200px;
 }
 
 [data-grid-cell] > header :last-child {

@@ -133,6 +133,7 @@ body:not([data-state="not-logged-in"]) {
   grid-template-columns: 8em auto 8em;
   grid-gap: 0;
   align-items: center;
+  min-width: auto;
 }
 
 [data-as-menu] li > a {
@@ -163,6 +164,9 @@ body:not([data-state="not-logged-in"]) {
 /*
   Footer
 */
+#footer {
+  min-width: auto;
+}
 #page-footer {
   --side: calc(var(--default-margin) / 2);
   margin: var(--default-margin) var(--side) 0 var(--side);
@@ -220,6 +224,7 @@ main {
 }
 
 #page-body {
+  min-width: auto;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
