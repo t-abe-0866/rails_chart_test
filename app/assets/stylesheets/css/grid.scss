@@ -9,6 +9,8 @@
   --columns: 1;
   --gap: var(--default-margin);
   
+  
+  
   display: grid;
   grid-template: auto / repeat(var(--columns), minmax(0, 1fr));
   grid-gap: var(--gap);
