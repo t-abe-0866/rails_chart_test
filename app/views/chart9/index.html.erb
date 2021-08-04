@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- PT: head -->
+    <link rel="stylesheet" href="/assets/css/spec.dashboard.scss">
+    <script>
+      function edit_view_item() {
+        var dialog = new EFCCDialog({
+          title: '表示項目の設定',
+          body: `
+            <table data-styled>
+              <thead>
+                <tr>
+                  <th>選択</th>
+                  <th>No.</th>
+                  <th>項目名</th>
+                  <th>凡例</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-part="controls" data-arrangement="text-align-center">
+                    <div data-component="inline-toolbar">
+                      <ul data-part="items">
+                        <li>
+                          <input type="checkbox" data-styled data-variant="switch" checked>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                  <td data-scope="No.">1</td>
+                  <td data-scope="項目名">代表温度</td>
+                  <td data-scope="凡例" data-arrangement="text-align-center" data-arrangement-mobile="text-align-left"><input data-styled type="color" value="#09628a"></td>
+                </tr>
+                <tr>
+                  <td data-part="controls" data-arrangement="text-align-center">
+                    <div data-component="inline-toolbar">
+                      <ul data-part="items">
+                        <li>
+                          <input type="checkbox" data-styled data-variant="switch" checked>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                  <td data-scope="No.">2</td>
+                  <td data-scope="項目名">相対温度</td>
+                  <td data-scope="凡例" data-arrangement="text-align-center" data-arrangement-mobile="text-align-left"><input data-styled type="color" value="#327ec3"></td>
+                </tr>
+                <tr>
+                  <td data-part="controls" data-arrangement="text-align-center">
+                    <div data-component="inline-toolbar">
+                      <ul data-part="items">
+                        <li>
+                          <input type="checkbox" data-styled data-variant="switch" checked>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                  <td data-scope="No.">3</td>
+                  <td data-scope="項目名">CO<sub>2</sub>温度</td>
+                  <td data-scope="凡例" data-arrangement="text-align-center" data-arrangement-mobile="text-align-left"><input data-styled type="color" value="#18a85b"></td>
+                </tr>
+                <tr>
+                  <td data-part="controls" data-arrangement="text-align-center">
+                    <div data-component="inline-toolbar">
+                      <ul data-part="items">
+                        <li>
+                          <input type="checkbox" data-styled data-variant="switch" checked>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                  <td data-scope="No.">4</td>
+                  <td data-scope="項目名">日射</td>
+                  <td data-scope="凡例" data-arrangement="text-align-center" data-arrangement-mobile="text-align-left"><input data-styled type="color" value="#d757bb"></td>
+                </tr>
+                <tr>
+                  <td data-part="controls" data-arrangement="text-align-center">
+                    <div data-component="inline-toolbar">
+                      <ul data-part="items">
+                        <li>
+                          <input type="checkbox" data-styled data-variant="switch">
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                  <td data-scope="No.">5</td>
+                  <td data-scope="項目名">飽差</td>
+                  <td data-scope="凡例" data-arrangement="text-align-center" data-arrangement-mobile="text-align-left"><input data-styled type="color" value="#b8fecf"></td>
+                </tr>
+                <tr>
+                  <td colspan="4">…</td>
+                </tr>
+              </tbody>
+            </table>
+            `,
+          footer: `
+            <div data-layout="arranger">
+              <div data-position="left"">
+                <div data-component="button-group">
+                  <button data-styled data-variant="warn" data-component-role="close">初期設定に戻す</button>
+                </div>
+              </div>
+              <div data-position="right">
+                <div data-component="button-group">
+                  <button data-styled data-component-role="close">キャンセル</button>
+                  <button data-styled data-variant="ok" onclick="void(0);">更新</button>
+                </div>
+              </div>
+            </div>`
+        });
+
+        dialog.show();
+        dev_behaviour_simulator_init();
+      }
+
+      $(window).on('load', function () {
+        if (docCookies.getItem('view-mode') == 'mobile') {
+          $('head').append(`<link rel="stylesheet" href="/assets/css/spec.dashboard.mobile.scss">`);
+        }
+
+        $('[data-function="edit_view_item"]').on('click', function () {
+          edit_view_item();
+        });
+      });
+    </script>
+    <!-- // -->
+  </head>
+  <body>
+    <!-- PT: header -->
+    <script src="/assets/js/partial-templates/header.html.js"></script>
+    <!-- // -->
+    <main>
+      <article>
+        <div class="wfx">
+          <header id="page-header" data-grid>
+            <div data-grid-cell>
+              <div data-layout="arranger">
+                <div data-position="right">
+                  <div data-component="button-group">
+                    <button data-styled="" data-variant="ok" data-function="edit_view_item">表示項目の設定</button>
+                    <a data-styled data-variant="ok">最新値表示</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-grid-cell>
+              <div data-layout="arranger">
+                <div data-position="left">
+                  <h2 id="page-name">観測グラフ</h2>
+                </div>
+              </div>
+            </div>
+          </header>
+          <div id="page-body" data-grid data-grid-columns="2" data-grid-columns-mobile="1">
+            <div data-grid-cell="canvas" data-grid-span="2" data-grid-span-mobile="1">
+              <div data-grid>
+                <div data-grid-cell>
+                  <section>
+                    <div data-grid data-variant="^h-ruled">
+                      <div data-grid-cell class="summary-heading">
+                        <header data-spec-component="summary-heading">
+                          <div data-part="icon">
+                            <i><img class="list-view-icon" src="/assets/img/placeholder_square.svg" alt=""></i>
+                          </div>
+                          <div data-part="heading-id">
+                            <label data-component="itemized">
+                              <span data-part="marker" data-variant="framed">
+                                <em>ID</em>
+                              </span>
+                              <span>12345678</span>
+                            </label>
+                          </div>
+                          <div data-part="heading-name">
+                            <h3>トマト - 北陵町</h3>
+                          </div>
+                        </header>
+                      </div>
+                      <div data-grid-cell>
+                        <div class="section-body">
+                          <div data-grid>
+                            <div data-grid-cell>
+                              <div data-layout="graph">
+                                <div data-part="header-items">
+                                  <div data-layout="arranger" data-variant-mobile="^wrap">
+                                    <div data-position="left">
+                                      <div data-component="toolbar-group">
+                                        <div data-component="toolbar">
+                                          <label>基準日</label>
+                                          <input data-styled type="text" data-js-lib="flatpickr-date" value="2019/12/01">
+                                        </div>
+                                        <div data-component="toolbar">
+                                          <label>時間</label>
+                                          <input data-styled type="text" data-js-lib="flatpickr-time" value="00:00">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div data-position="right">
+                                      <div data-component="toolbar">
+                                        <label>自動更新</label>
+                                        <input data-styled type="checkbox" data-variant="switch" value="true">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div data-part="body-items">
+                                  <div data-part="nav-left">
+                                    <button data-styled data-variant="^maximized"><i class="fas fa-caret-left"></i></button>
+                                  </div>
+                                  <%= javascript_pack_tag 'application' %>
+                                  <div data-part="graph" id="mydiv">
+                                    <iframe class="sample" id="foo" name="foo" src="/sample_chartA9" width="100%" height="600" scrolling="no"></iframe>
+                                    <style>
+                                      #foo {
+                                        border: none;
+                                      }
+                                    </style>
+                                  </div>
+                                  <div data-part="nav-right">
+                                    <button data-styled data-variant="^maximized"><i class="fas fa-caret-right"></i></button>
+                                  </div>
+                                </div>
+                                <div data-part="footer-items">
+                                  <div data-part="item">
+                                    <ul data-component="legend" data-columns="6" data-columns-mobile="2">
+                                      <li>
+                                        <span data-part="marker"><i class="fas fa-square-full"></i></span>
+                                        <label>項目名 1</label>
+                                      </li>
+                                      <li>
+                                        <span data-part="marker"><i class="fas fa-square-full"></i></span>
+                                        <label>項目名 2</label>
+                                      </li>
+                                      <li>
+                                        <span data-part="marker"><i class="fas fa-square-full"></i></span>
+                                        <label>項目名 3</label>
+                                      </li>
+                                      <li>
+                                        <span data-part="marker"><i class="fas fa-square-full"></i></span>
+                                        <label>項目名 4</label>
+                                      </li>
+                                      <li>
+                                        <span data-part="marker"><i class="fas fa-square-full"></i></span>
+                                        <label>項目名 5</label>
+                                      </li>
+                                      <li>
+                                        <span data-part="marker"><i class="fas fa-square-full"></i></span>
+                                        <label>項目名 6</label>
+                                      </li>
+                                      <li>
+                                        <span data-part="marker"><i class="fas fa-square-full"></i></span>
+                                        <label>項目名 7</label>
+                                      </li>
+                                      <li>
+                                        <span data-part="marker"><i class="fas fa-square-full"></i></span>
+                                        <label>Very loooooooong item name</label>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div data-part="item">
+                                    <div data-component="toolbar-group">
+                                      <div data-component="toolbar">
+                                        <label>表示範囲</label>
+                                        <ul data-component="segmented-button" data-dev-behaviour="exclusive">
+                                          <li>
+                                            <button data-state="active"  id="button1" value="1" onclick="calA()">6時間</button>
+                                          </li>
+                                          <li>
+                                            <button  id="button2" value="2" onclick="calB()">12時間</button>
+                                          </li>
+                                          <li>
+                                            <button  id="button3" value="3" onclick="calC()">24時間</button>
+                                          </li>
+                                          <li>
+                                            <button  id="button4" value="4" onclick="calD()">3日</button>
+                                          </li>
+                                          <li>
+                                            <button id="button5" value="5" onclick="calE()">5日</button>
+                                          </li>
+                                            <script type="text/javascript">
+                                              function calA() {
+                                                  // フレームのDOM要素を取得
+                                                  var btn = $('#btn-a').val();
+                                                  var myh1 = document.getElementById("mydiv");
+                                                  myh1.innerHTML = '<iframe class="sample" id="foo" name="foo" src="/sample_chartA9" width="100%" height="600" scrolling="no"></iframe><style>#foo {border: none;}</style>';
+                                              }
+                                              function calB() {
+                                                  // フレームのDOM要素を取得
+                                                  var btn = $('#btn-a').val();
+                                                  var myh1 = document.getElementById("mydiv");
+                                                  myh1.innerHTML = '<iframe class="sample" id="foo" name="foo" src="/sample_chartB9" width="100%" height="600" scrolling="no"></iframe><style>#foo {border: none;}</style>';
+                                              }
+                                              function calC() {
+                                                  // フレームのDOM要素を取得
+                                                  var btn = $('#btn-a').val();
+                                                  var myh1 = document.getElementById("mydiv");
+                                                  myh1.innerHTML = '<iframe class="sample" id="foo" name="foo" src="/sample_chartC9" width="100%" height="600" scrolling="no"></iframe><style>#foo {border: none;}</style>';
+                                              }
+                                              function calD() {
+                                                  // フレームのDOM要素を取得
+                                                  var btn = $('#btn-a').val();
+                                                  var myh1 = document.getElementById("mydiv");
+                                                  myh1.innerHTML = '<iframe class="sample" id="foo" name="foo" src="/sample_chartD9" width="100%" height="600" scrolling="no"></iframe><style>#foo {border: none;}</style>';
+                                              }
+                                              function calE() {
+                                                  // フレームのDOM要素を取得
+                                                  var btn = $('#btn-a').val();
+                                                  var myh1 = document.getElementById("mydiv");
+                                                  myh1.innerHTML = '<iframe class="sample" id="foo" name="foo" src="/sample_chartE9" width="100%" height="600" scrolling="no"></iframe><style>#foo {border: none;}</style>';
+                                              }
+                                            </script>
+                                        </ul>
+                                      </div>
+                                      <div data-component="toolbar">
+                                        <label>スパン</label>
+                                        <ul data-component="segmented-button" data-dev-behaviour="exclusive">
+                                          <li>
+                                            <button data-state="active">フル</button>
+                                          </li>
+                                          <li>
+                                            <button>24時間</button>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+    <!-- PT: footer -->
+    <script src="/assets/js/partial-templates/footer.html.js"></script>
+    <!-- // -->
+  </body>
+</html>

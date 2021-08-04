@@ -200,9 +200,6 @@ const Chart2 = (props) => {
           top: true,
           start: ['min', 105],
           end: ['max', 85],
-          color: '#ff4d4f',
-        });
-        chart.annotation().line({
           start: ['min', 85],
           end: ['max', 85],
           style: {
